@@ -1,50 +1,40 @@
 const http = require('http');
-const host = 'localhost';
-const port = 3000;
 
-// 1° escutando as requisições 
-// const requestListener = function (req, res){
-//     res.writeHead(200)
-//     res.end('Rodando')
-// };
+const partidas = [
+    { id: 1, partida: "gremio x inter" },
+    { id: 2, partida: "flamengo x vasco" },
+    { id: 3, partida: "inter x avai" },
+    { id: 4, partida: "flamengo x gremio" },
+    { id: 5, partida: "real madrid x gremio" },
+    { id: 6, partida: "barcelona x inter" }
+]
 
-//Podemos modificar nosso servidor para suportar diferentes tipos de requisição:
+const servidor = http.createServer((req, res) => {
+    // Conteudo server
+    const url = req.url
 
-const requestListener = function (req, res) {
-    //definindo o tipo de dados com json
-    res.setHeader('Content-Type', 'application/json')
-
-    //tratando as possíveis requisições do cliente
     switch (req.url) {
+
         case '/partidas':
-            res.writeHead(200);
-            res.end(JSON.stringify({
-                partidas: [
-                    { id: 1, partida: "Grêmio x Inter" },
-                    { id: 2, partida: "Flamengo x Vasco" },
-                    { id: 3, partida: "inter x Avaí" },
-                    { id: 4, partida: "Flamengo x Grêmio" },
-                    { id: 5, partida: "Real Madrid x Grêmio" },
-                    { id: 6, partida: "Barcelono x Inter" }
-                ]
-            }));
+            res.writeHead(200)
+            res.end(JSON.stringify({ nomeTime: [partidas] }))
             break;
-        case '/{node-do-time}':
-            res.writeHead(200);
-            res.end(JSON.stringify({ 
-                partida_relacionada: [] 
-            }));
-            break;
+
         default:
-            res.writeHead(404);
-            res.end('Nada encontrado');
+            const nomeDoFilme = url.replaceAll('/', '')
+            const partidasDoTime = partidas.filter(item => item.partida.includes(nomeDoFilme))
+
+            if (partidasDoTime.length > 0) {
+                res.writeHead(200);
+                res.end(JSON.stringify({ nomeTime: [partidasDoTime] }));
+            } else {
+                res.writeHead(404);
+                res.end(JSON.stringify({ nomeTime: ["Nenhuma partida futura"] }));
+            }
     }
-}
 
-// 2° Criando o servidor
-const server = http.createServer(requestListener);
+})
 
-// 3° Iniciando o servidor
-server.listen(port, host, () => {
-    console.log(`Server disponível`)
-});
+servidor.listen(3000, 'localhost', () => {
+    console.log('rodando')
+})

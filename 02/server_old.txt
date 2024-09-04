@@ -1,0 +1,53 @@
+const http = require('http');
+const host = 'localhost';
+const port = 3000;
+
+// 1° escutando as requisições 
+// const requestListener = function (req, res){
+//     res.writeHead(200)
+//     res.end('Rodando')
+// };
+
+//Podemos modificar nosso servidor para suportar diferentes tipos de requisição:
+
+const partidas = [
+    { id: 1, partida: "grêmio x inter" },
+    { id: 2, partida: "flamengo x vasco" },
+    { id: 3, partida: "inter x avaí" },
+    { id: 4, partida: "flamengo x grêmio" },
+    { id: 5, partida: "real madrid x grêmio" },
+    { id: 6, partida:  "barcelona x Inter" }
+]
+
+const requestListener = function (req, res) {
+    //definindo o tipo de dados com json
+    res.setHeader('Content-Type', 'application/json')
+    
+
+    //tratando as possíveis requisições do cliente
+    switch (req.url) {
+        case '/partidas':
+            res.writeHead(200);
+            res.end(JSON.stringify({
+                
+            }));
+            break;
+        case '/{node-do-time}':
+            res.writeHead(200);
+            res.end(JSON.stringify({ 
+                partida_relacionada: [] 
+            }));
+            break;
+        default:
+            res.writeHead(404);
+            res.end('Nada encontrado');
+    }
+}
+
+// 2° Criando o servidor
+const server = http.createServer(requestListener);
+
+// 3° Iniciando o servidor
+server.listen(port, host, () => {
+    console.log(`Server disponível`)
+});
