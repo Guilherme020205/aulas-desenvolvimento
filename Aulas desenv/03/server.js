@@ -27,9 +27,11 @@ app.post('/compras', (req, res) => {
     return res.json(compras)
 });
 
-app.delete('/compras/:index', (req, res) => {
-    const { index } = req.params;
-    compras.splice(index, 1)
+app.delete('/compras/:id', (req, res) => {
+    // const { index } = req.params;
+    // compras.splice(index, 1)
+    const id = Number(req.params.id)
+    compras= compras.filter((compras) => compras.id !== id)
 
     return res.json(compras)
 });
