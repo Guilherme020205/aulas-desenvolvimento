@@ -2,11 +2,11 @@
 
 function podeVotar(idade) {
     if(idade >= 18 && idade <= 70){
-        return ("Votação obrigatória")
+        return "Votação obrigatória"
     }else if( idade > 70) {
-        return ("Opcional")
+        return "Opcional"
     }else{
-        return ("Não pode")
+        return "Não pode"
     }
 }
-console.log(podeVotar(20))
+module.exports = {podeVotar}
