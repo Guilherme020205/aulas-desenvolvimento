@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="output.css">
+</head>
+
+<body>
+	<div class="w-full h-full flex flex-col justify-center items-center">
+		<div>
+			<h1 class="font-bold text-3xl">Buscar Pokémon pelo número</h1>
+
+			<div class="flex flex-col items-center bg-slate-500 mt-6">
+				<div class="flex flex-col items-center py-6">
+
+					<label for="pokemon-id" class="text-white mb-2">Digite o número do Pokémon:</label>
+					<input type="number" id="pokemon-id" name="pokemon-id" required class="text-black mb-2 px-1 py-1">
+					
+					<button onclick="buscarPokemon()"
+						class="bg-blue-500 px-6 py-1 rounded border-4 border-blue-500 text-white hover:bg-white hover:text-black duration-300">
+						Buscar Pokémon
+					</button>
+
+				</div>
+
+				<div class="flex flex-col items-center pokemon-container" id="pokemon-container">
+					<img src="https://i.pinimg.com/originals/bc/65/63/bc656300bed1f928413d44a097049c8f.gif" alt="pokebola" style="width: 450px;">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+
+</html>
