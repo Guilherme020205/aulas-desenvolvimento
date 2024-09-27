@@ -31,7 +31,7 @@ const anteriorPokemon = () => {
       <h3>{pokemon?.name}</h3>
       <img src={pokemon?.sprites.front_default} alt="" />
 
-      <button onClick={anteriorPokemon}>Anterior</button>
+      <button onClick={anteriorPokemon}>Anterior</button>n=
       <button onClick={proximoPokemon}>Soma</button>
 
     </>
