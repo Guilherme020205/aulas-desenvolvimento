@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 
 function Filme() {
     const { id } = useParams()
-    const [filme, setFilme] = useState(null)
+    const [filme, setFilme] = useState([])
 
     useEffect(() => {
         buscarFilmePeloId(id)
