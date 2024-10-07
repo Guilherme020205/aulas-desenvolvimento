@@ -31,4 +31,35 @@ describe('Testando a funcao adicionar pedidos e usuarios', () => {
         expect(findOrder.userId).toBe(findUser.id)
 
     })
+
+    test('testando a funcao excluir', () => {
+        //add user e pedido
+        const user = {
+            id: 2,
+            name: "Maria"
+        }
+        const order = {
+            id: 150,
+            item: "Calota",
+            userId: 2
+        }
+
+        addUser(user)
+        addOrder(order)
+        
+        // Deleta primeio o pedido, pois está vinculado ao user
+        deleteOrder(150)
+        deleteUser(2)
+
+        // busca usuario e pedido na lista 
+
+        const findUser = getUser(2)
+        const findOrder = getOrder(150)
+
+        // Valida se o resultado e undefined
+        expect(findOrder).toBeUndefined();
+        expect(findUser).toBeUndefined();
+
+})
+
 })
