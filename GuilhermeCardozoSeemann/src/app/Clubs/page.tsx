@@ -39,7 +39,15 @@ export default function Clubs() {
 
     return (
         <>
-
+            <main>
+                <div className="flex flex-row border-b-2 border-gray-400 py-2 gap-10">
+                    <img src="https://logodownload.org/wp-content/uploads/2017/05/cartola-fc-logo-5.png" alt="logo cartola" className="w-40" />
+                    <div className="flex flex-row  py-2 gap-5">
+                        <input type="text" placeholder="Buscar time pelo nome " className=" rounded-xl p-2"/>
+                        <button className="bg-[#DD4913] text-white py-2 px-10 rounded-xl">Buscar</button>
+                    </div>
+                </div>
+            </main>
             <div>
                 <ul className="flex flex-col gap-4">
                     {clubs.map((evento, key) =>
@@ -50,12 +58,12 @@ export default function Clubs() {
 
                                 <div className="flex flex-col ">
 
-                                    <p>{evento.nome}</p>
-                                    <p className="text-[#DD4913]">{evento.apelido}</p>
+                                    <p className="text-[#000] font-bold text-2xl">{evento.nome}</p>
+                                    <p className="text-[#DD4913] text-xs">{evento.apelido}</p>
 
                                 </div>
-
                             </li>
+                            <div className="w-full border-b border-gray-400 my-4"></div>
                         </Link>
                     )}
                 </ul>
