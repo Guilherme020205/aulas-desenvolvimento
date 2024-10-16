@@ -64,13 +64,13 @@ export default function Atletas() {
         {atletas.map((atleta, key) => (
 
           <li key={key} className="flex flex-col gap-2 items-center text-center">
-            <img
-              src="https://s.sde.globo.com/media/person_role/2024/02/26/photo_220x220_EM6z7aN.png"
+            {/* <img
+              src="https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/2023/06/52995026633_1a363511b0_o-e1687484938274.jpg"
               alt="Foto"
               className="w-28 h-28 object-cover"
-            />
+            /> */}
 
-            {/* <img src={atleta.foto} alt="Foto" className="w-16 h-16 object-cover" /> */}
+            <img src={atleta.foto} alt="Foto" className="w-16 h-16 object-cover" />
 
             <div className="flex flex-col">
               <p className="text-[#000] font-bold text-[25px]">{atleta.apelido}</p>
