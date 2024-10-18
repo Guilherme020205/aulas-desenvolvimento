@@ -19,6 +19,7 @@ function Home() {
                 type='text'
                 onChange={(event) => setTitulo(event.target.value)}
                 value={titulo}
+                id='idBusca'
             />
             <button onClick={buscarFilmes}>Buscar</button>
             <ul>
